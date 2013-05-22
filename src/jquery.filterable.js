@@ -1,5 +1,5 @@
 (function( $ ) {
-  $.fn.columnFilter = function(opts) {
+  $.fn.filterable = function(opts) {
 
     // Set options
     var defaults = {};

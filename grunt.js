@@ -22,16 +22,16 @@ module.exports = function(grunt) {
       dist : {
         src : [
           "<banner>",
-          "src/jquery.columnfilter.js"
+          "src/jquery.filterable.js"
         ],
-        dest : "lib/jquery.columnfilter.js"
+        dest : "lib/jquery.filterable.js"
       }
     },
     lint : {
       all : ["grunt.js", "src/**/*.js"]
     },
     min: {
-      "lib/jquery.columnfilter.min.js" : ["<banner>", "<banner>","lib/jquery.columnfilter.js"]
+      "lib/jquery.filterable.min.js" : ["<banner>", "<banner>","lib/jquery.filterable.js"]
     },
     qunit: {
       files: ["test/index.html"]

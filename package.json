@@ -1,12 +1,12 @@
 {
-  "name"        : "columnfilter",
-  "description" : "jQuery plugin that filters an HTML table based on column-specific values",
+  "name"        : "filterable",
+  "description" : "jQuery plugin that filters an HTML table based on column-specific values using x-editable",
   "version"     : "0.0.1",
-  "homepage"    : "https://github.com/lightswitch05/column-filter",
-  "main"        : "lib/jquery.columnfilter.js",
+  "homepage"    : "https://github.com/lightswitch05/filterable",
+  "main"        : "lib/jquery.filterable.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/lightswitch05/column-filter.git"
+    "url": "git://github.com/lightswitch05/filterable.git"
   },
   "author" : {
     "name"  : "Daniel White"
@@ -19,6 +19,6 @@
   },
   "licenses" : [{
     "type" : "MIT",
-    "url"  : "https://github.com/lightswitch05/column-filter/blob/master/MIT-LICENSE"
+    "url"  : "https://github.com/lightswitch05/filterable/blob/master/MIT-LICENSE"
   }]
 }
