@@ -1,0 +1,24 @@
+{
+  "name"        : "columnfilter",
+  "description" : "jQuery plugin that filters an HTML table based on column-specific values",
+  "version"     : "0.0.1",
+  "homepage"    : "https://github.com/lightswitch05/column-filter",
+  "main"        : "lib/jquery.columnfilter.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lightswitch05/column-filter.git"
+  },
+  "author" : {
+    "name"  : "Daniel White"
+  },
+  "scripts": {
+    "test": "grunt lint qunit"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  },
+  "licenses" : [{
+    "type" : "MIT",
+    "url"  : "https://github.com/lightswitch05/column-filter/blob/master/MIT-LICENSE"
+  }]
+}
