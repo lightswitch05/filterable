@@ -1,0 +1,21 @@
+.filterable {
+  color: inherit;
+  border-bottom: inherit;
+  cursor: hand;
+  cursor: pointer;
+}
+
+.filterable:hover {
+  color: #005580;
+  border-bottom: inherit;
+}
+
+.filterable-active {
+  color: #0088cc;
+}
+
+.filterable-match {}
+
+.filterable-no-match {
+  display: none !important;;
+}
