@@ -26,6 +26,7 @@
     };
     
     var isMatch = function(query, value) {
+      query = query.replace(/\*/, '.*');
       var expression = new RegExp('.*' + query + '.*', 'i');
       return expression.test(value) === true;
     };

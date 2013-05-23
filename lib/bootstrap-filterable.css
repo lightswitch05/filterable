@@ -6,12 +6,12 @@
 }
 
 .filterable:hover {
-  color: #005580;
+  color: #dff0d8;
   border-bottom: inherit;
 }
 
 .filterable-active {
-  color: #0088cc;
+  color: #dff0d8;
 }
 
 .filterable-match {}
