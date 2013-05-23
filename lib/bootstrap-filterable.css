@@ -3,15 +3,18 @@
   border-bottom: inherit;
   cursor: hand;
   cursor: pointer;
+  font-style: normal;
 }
 
 .filterable:hover {
-  color: #dff0d8;
+  color: #5bb75b;
   border-bottom: inherit;
+  font-style: normal;
 }
 
 .filterable-active {
-  color: #dff0d8;
+  color: #5bb75b;
+  font-style: italic;
 }
 
 .filterable-match {}
