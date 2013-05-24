@@ -1,14 +1,17 @@
 {
   "name": "filterable",
   "title": "Filterable",
-  "description": "jQuery plugin that filters an HTML table based on column-specific values using x-editable",
+  "description": "jQuery plugin that filters an HTML table based on column-specific values using x-editable and bootstrap theme",
   "keywords": [
     "table",
     "filter",
     "column",
-    "filterable"
+    "filterable",
+    "bootstrap",
+    "editable",
+    "x-editable"
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "Daniel White",
     "url": "http://www.developerdan.com"
@@ -20,7 +23,7 @@
     }
   ],
   "bugs": "https://github.com/lightswitch05/filterable/issues",
-  "homepage": "https://github.com/lightswitch05/filterable",
+  "homepage": "http://lightswitch05.github.io/filterable",
   "docs": "https://github.com/lightswitch05/filterable",
   "download": "https://github.com/lightswitch05/filterable",
   "dependencies": {

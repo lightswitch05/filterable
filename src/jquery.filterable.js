@@ -4,7 +4,10 @@
     // Set options
     var defaults = {
       ignoreColumns: [],
-      onlyColumns: null
+      onlyColumns: null,
+      prependWild: true,
+      appendWild: true,
+      ignoreCase: true
     };
     opts = $.extend(defaults, opts);
 
@@ -27,7 +30,10 @@
     
     var isMatch = function(query, value) {
       query = query.replace(/\*/, '.*');
-      var expression = new RegExp('.*' + query + '.*', 'i');
+      query = opts.prependWild ? '.*' + query : query;
+      query += opts.appendWild ? '.*' : query;
+      var options = opts.ignoreCase ? 'i' : '';
+      var expression = new RegExp(query, options);
       return expression.test(value) === true;
     };
     

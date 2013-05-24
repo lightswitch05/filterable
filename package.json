@@ -1,8 +1,8 @@
 {
   "name"        : "filterable",
   "description" : "jQuery plugin that filters an HTML table based on column-specific values using x-editable",
-  "version"     : "0.0.1",
-  "homepage"    : "https://github.com/lightswitch05/filterable",
+  "version"     : "0.1.0",
+  "homepage"    : "http://lightswitch05.github.io/filterable",
   "main"        : "lib/jquery.filterable.js",
   "repository": {
     "type": "git",
