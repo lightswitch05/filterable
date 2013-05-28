@@ -9,7 +9,7 @@ test("ignores specific columns", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -50,7 +50,7 @@ test("only filter specific columns", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -96,7 +96,7 @@ test("case sensitive", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -107,22 +107,22 @@ test("case sensitive", function() {
         "<th id='heading4'>Heading 4</th>" +
       "</tr>" +
       "<tr>" +
-        "<td>Value 1</th>" +
-        "<td>Value 1</th>" +
-        "<td>Value 1</th>" +
-        "<td>Value 1</th>" +
+        "<td>Value 1</td>" +
+        "<td>Value 1</td>" +
+        "<td>Value 1</td>" +
+        "<td>Value 1</td>" +
       "</tr>" +
       "<tr>" +
-        "<td>VALUE 2</th>" +
-        "<td>Value 2</th>" +
-        "<td>Value 2</th>" +
-        "<td>Value 2</th>" +
+        "<td>VALUE 2</td>" +
+        "<td>Value 2</td>" +
+        "<td>Value 2</td>" +
+        "<td>Value 2</td>" +
       "</tr>" +
       "<tr>" +
-        "<td>value 3</th>" +
-        "<td>Value 3</th>" +
-        "<td>Value 3</th>" +
-        "<td>Value 3</th>" +
+        "<td>value 3</td>" +
+        "<td>Value 3</td>" +
+        "<td>Value 3</td>" +
+        "<td>Value 3</td>" +
       "</tr>" +
       "</table>"
   );

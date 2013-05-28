@@ -9,7 +9,7 @@ test("basic usage", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -50,7 +50,7 @@ test("append wild card", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -91,7 +91,7 @@ test("prepend wild card", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -132,7 +132,7 @@ test("filters multiple columns", function() {
               "<td>Heading 2 Value " + (i+1) + "</td>" +
               "<td>Heading 3 Value " + (i+2) + "</td>" +
               "<td>Heading 4 Value " + (i+3) + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -178,7 +178,7 @@ test("clears filters", function() {
               "<td>Heading 2 Value " + (i+1) + "</td>" +
               "<td>Heading 3 Value " + (i+2) + "</td>" +
               "<td>Heading 4 Value " + (i+3) + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -238,7 +238,7 @@ test("uses * as wild card", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
@@ -279,7 +279,7 @@ test("uses coumn name as popup title", function() {
               "<td>Heading 2 Value " + i + "</td>" +
               "<td>Heading 3 Value " + i + "</td>" +
               "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+            "</tr>";
   }
   $("#qunit-fixture").html(
       "<table id='test-table'>" +
