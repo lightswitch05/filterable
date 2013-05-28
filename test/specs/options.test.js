@@ -4,21 +4,21 @@ module("options");
 test("ignores specific columns", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(2);
@@ -45,21 +45,21 @@ test("ignores specific columns", function() {
 test("only filter specific columns", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(3);
@@ -91,40 +91,40 @@ test("only filter specific columns", function() {
 test("case sensitive", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>HeAding 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" +
-      "<tr>" +
-        "<td>Value 1</th>" +
-        "<td>Value 1</th>" +
-        "<td>Value 1</th>" +
-        "<td>Value 1</th>" +
-      "</tr>" +
-      "<tr>" +
-        "<td>VALUE 2</th>" +
-        "<td>Value 2</th>" +
-        "<td>Value 2</th>" +
-        "<td>Value 2</th>" +
-      "</tr>" +
-      "<tr>" +
-        "<td>value 3</th>" +
-        "<td>Value 3</th>" +
-        "<td>Value 3</th>" +
-        "<td>Value 3</th>" +
-      "</tr>" +
-      "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" +
+      "<div class='tr'>" +
+        "<div class='td'>Value 1</div>" +
+        "<div class='td'>Value 1</div>" +
+        "<div class='td'>Value 1</div>" +
+        "<div class='td'>Value 1</div>" +
+      "</div>" +
+      "<div class='tr'>" +
+        "<div class='td'>VALUE 2</div>" +
+        "<div class='td'>Value 2</div>" +
+        "<div class='td'>Value 2</div>" +
+        "<div class='td'>Value 2</div>" +
+      "</div>" +
+      "<div class='tr'>" +
+        "<div class='td'>value 3</div>" +
+        "<div class='td'>Value 3</div>" +
+        "<div class='td'>Value 3</div>" +
+        "<div class='td'>Value 3</div>" +
+      "</div>" +
+      "</div>"
   );
 
   expect(4);
@@ -140,9 +140,9 @@ test("case sensitive", function() {
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table > .tr.filterable-match').length;
+  var noMatch = $('#test-table > .tr.filterable-no-match').length;
+  var allRows = $('#test-table > .tr').length;
   strictEqual(match, 1, "Finds 1 matche");
   strictEqual(noMatch, 2, "Finds 2 non-matches");
   strictEqual(allRows, 4, "Finds the expected number of rows");

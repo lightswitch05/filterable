@@ -40,12 +40,12 @@
       return expression.test(value) === true;
     };
     
-    var allMatches = function(row) { return $(row).find('td.filterable-no-match').length === 0; };
+    var allMatches = function(row) { return $(row).find('div.td.filterable-no-match').length === 0; };
     var setFilterActive = function(element) { $(element).addClass('filterable-active'); };
     var clearFilter = function(element) { $(element).removeClass('filterable-active'); };
     
     var doFilter = function(value, element) {
-      var table = element.closest('table');
+      var table = element.closest('div.table');
       var index = element.data('name');
       var regex = buildRegex(value);
       if(value === ''){
@@ -54,9 +54,9 @@
         setFilterActive(element);
       }
       
-      table.children('tbody,*').children('tr').each(function(rowIndex, row) {
+      table.children('tbody,*').addBack().children('div.tr').each(function(rowIndex, row) {
         if( rowIndex !== 0 ) {
-          var cell = $(row).children('td').eq(index);
+          var cell = $(row).children('div.td').eq(index);
           var text = $.trim(cell.text());
           if( isMatch(regex, text) ) {
             setMatch(cell);
@@ -104,9 +104,9 @@
     };
     
     var getHeadings = function(table) {
-      var firstRow = table.find('tr:first').first();
+      var firstRow = table.find('div.tr:first').first();
       var headings = {};
-      $(firstRow).children('td,th').each(function(cellIndex, cell) {
+      $(firstRow).children('div.td,.th').each(function(cellIndex, cell) {
         if( !ignoredColumn(cellIndex) ) {
           headings[ cellIndex ] = $(cell);
         }

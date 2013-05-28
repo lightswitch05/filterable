@@ -4,21 +4,21 @@ module("core");
 test("basic usage", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(4);
@@ -32,9 +32,9 @@ test("basic usage", function() {
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table > .tr.filterable-match').length;
+  var noMatch = $('#test-table > .tr.filterable-no-match').length;
+  var allRows = $('#test-table > .tr').length;
   strictEqual(match, 1, "Finds 1 matches");
   strictEqual(noMatch, 98, "Finds 98 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -45,21 +45,21 @@ test("basic usage", function() {
 test("append wild card", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(4);
@@ -73,9 +73,9 @@ test("append wild card", function() {
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table .tr.filterable-match').length;
+  var noMatch = $('#test-table .tr.filterable-no-match').length;
+  var allRows = $('#test-table .tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch, 88, "Finds 88 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -86,21 +86,21 @@ test("append wild card", function() {
 test("prepend wild card", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(4);
@@ -114,9 +114,9 @@ test("prepend wild card", function() {
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table > .tr.filterable-match').length;
+  var noMatch = $('#test-table > .tr.filterable-no-match').length;
+  var allRows = $('#test-table > .tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch, 88, "Finds 88 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -127,21 +127,21 @@ test("prepend wild card", function() {
 test("filters multiple columns", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + (i+1) + "</td>" +
-              "<td>Heading 3 Value " + (i+2) + "</td>" +
-              "<td>Heading 4 Value " + (i+3) + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + (i+1) + "</div>" +
+              "<div class='td'>Heading 3 Value " + (i+2) + "</div>" +
+              "<div class='td'>Heading 4 Value " + (i+3) + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(4);
@@ -160,9 +160,9 @@ test("filters multiple columns", function() {
   $('#heading2').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table > .tr.filterable-match').length;
+  var noMatch = $('#test-table .tr.filterable-no-match').length;
+  var allRows = $('#test-table .tr').length;
   strictEqual(match, 9, "Finds 9 matches");
   strictEqual(noMatch, 90, "Finds 90 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -173,21 +173,21 @@ test("filters multiple columns", function() {
 test("clears filters", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + (i+1) + "</td>" +
-              "<td>Heading 3 Value " + (i+2) + "</td>" +
-              "<td>Heading 4 Value " + (i+3) + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + (i+1) + "</div>" +
+              "<div class='td'>Heading 3 Value " + (i+2) + "</div>" +
+              "<div class='td'>Heading 4 Value " + (i+3) + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(8);
@@ -206,9 +206,9 @@ test("clears filters", function() {
   $('#heading2').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table > .tr.filterable-match').length;
+  var noMatch = $('#test-table > .tr.filterable-no-match').length;
+  var allRows = $('#test-table > .tr').length;
   strictEqual(match, 9, "Finds 9 matches");
   strictEqual(noMatch, 90, "Finds 90 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -220,9 +220,9 @@ test("clears filters", function() {
   $('#heading2').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  match = $('#test-table > tbody > tr.filterable-match').length;
-  noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  allRows = $('#test-table > tbody > tr').length;
+  match = $('#test-table > .tr.filterable-match').length;
+  noMatch = $('#test-table > .tr.filterable-no-match').length;
+  allRows = $('#test-table > .tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch, 88, "Finds 88 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -233,21 +233,21 @@ test("clears filters", function() {
 test("uses * as wild card", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(4);
@@ -261,9 +261,9 @@ test("uses * as wild card", function() {
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
-  var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
-  var allRows = $('#test-table > tbody > tr').length;
+  var match = $('#test-table > .tr.filterable-match').length;
+  var noMatch = $('#test-table > .tr.filterable-no-match').length;
+  var allRows = $('#test-table > .tr').length;
   strictEqual(match, 19, "Finds 19 matches");
   strictEqual(noMatch, 80, "Finds 80 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
@@ -274,21 +274,21 @@ test("uses * as wild card", function() {
 test("uses coumn name as popup title", function() {
   var rows = "";
   for(var i=1; i<100; i++){
-    rows += "<tr>" +
-              "<td>Heading 1 Value " + i + "</td>" +
-              "<td>Heading 2 Value " + i + "</td>" +
-              "<td>Heading 3 Value " + i + "</td>" +
-              "<td>Heading 4 Value " + i + "</td>" +
-            "</tr>"
+    rows += "<div class='tr'>" +
+              "<div class='td'>Heading 1 Value " + i + "</div>" +
+              "<div class='td'>Heading 2 Value " + i + "</div>" +
+              "<div class='td'>Heading 3 Value " + i + "</div>" +
+              "<div class='td'>Heading 4 Value " + i + "</div>" +
+            "</div>";
   }
   $("#qunit-fixture").html(
-      "<table id='test-table'>" +
-      "<tr>" +
-        "<th id='heading1'>Heading 1</th>" +
-        "<th id='heading2'>Heading 2</th>" +
-        "<th id='heading3'>Heading 3</th>" +
-        "<th id='heading4'>Heading 4</th>" +
-      "</tr>" + rows + "</table>"
+      "<div class='table' id='test-table'>" +
+      "<div class='tr'>" +
+        "<div class='th' id='heading1'>Heading 1</div>" +
+        "<div class='th' id='heading2'>Heading 2</div>" +
+        "<div class='th' id='heading3'>Heading 3</div>" +
+        "<div class='th' id='heading4'>Heading 4</div>" +
+      "</div>" + rows + "</div>"
   );
 
   expect(1);
