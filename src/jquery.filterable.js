@@ -28,12 +28,15 @@
       $(ele).removeClass('filterable-match');
     };
     
-    var isMatch = function(query, value) {
+    var buildRegex = function(query) {
       query = query.replace(/\*/, '.*');
       query = opts.prependWild ? '.*' + query : query;
       query += opts.appendWild ? '.*' : query;
       var options = opts.ignoreCase ? 'i' : '';
-      var expression = new RegExp(query, options);
+      return new RegExp(query, options);
+    };
+    
+    var isMatch = function(expression, value) {
       return expression.test(value) === true;
     };
     
@@ -44,6 +47,7 @@
     var doFilter = function(value, element) {
       var table = element.closest('table');
       var index = element.data('name');
+      var regex = buildRegex(value);
       if(value === ''){
         clearFilter(element);
       } else {
@@ -54,7 +58,7 @@
         if( rowIndex !== 0 ) {
           var cell = $(row).children('td').eq(index);
           var text = $.trim(cell.text());
-          if( isMatch(value, text) ) {
+          if( isMatch(regex, text) ) {
             setMatch(cell);
             if(allMatches(row)){
               setMatch(row);
