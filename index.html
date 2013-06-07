@@ -15,9 +15,10 @@
     <title>Filterable</title>
   </head>
 
-  <body>
+  <body>  
     <div class="container" style="padding-bottom:50px;">
       <div class="navbar navbar-inverse navbar-fixed-top">
+      <a href="https://github.com/lightswitch05/filterable"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
         <div class="navbar-inner">
           <div class="container">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -27,6 +28,8 @@
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li><a href="https://github.com/lightswitch05/filterable">Github</a></li>
+                <li><a href="https://github.com/lightswitch05/filterable/issues">Issues</a></li>
+                <li><a href="http://www.developerdan.com/about">About Me</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -54,89 +57,97 @@
 
     <!-- MAIN CONTENT -->
     <div class="container">
-      <h1>Demo <small>Click one of the <i class="icon-filter"></i> 's below to begin</small></h1>
-      <table id="example-table" class="table table-striped table-hover table-condensed">
-        <tr>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Color</th>
-          <th>Year</th>
-        </tr>
-        <tbody>
+      <div class="row center span10">
+        <h1>Demo <small>Click one of the <i class="icon-filter"></i> 's below to begin</small></h1>
+        <table id="example-table" class="table table-striped table-hover table-condensed">
           <tr>
-            <td>Ford</td>
-            <td>Escort</td>
-            <td>Blue</td>
-            <td>2000</td>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Year</th>
           </tr>
-          <tr>
-            <td>Ford</td>
-            <td>Ranger</td>
-            <td>Blue</td>
-            <td>1990</td>
-          </tr>
-          <tr>
-            <td>Toyota</td>
-            <td>Tacoma</td>
-            <td>Red</td>
-            <td>2012</td>
-          </tr>
-          <tr>
-            <td>Ford</td>
-            <td>Mustang</td>
-            <td>Silver</td>
-            <td>2012</td>
-          </tr>
-          <tr>
-            <td>Mercury</td>
-            <td>Sable</td>
-            <td>Silver</td>
-            <td>2002</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container">
-      <h1>Options</h1>
-      <ul>
-        <li><code>ignoreColumns</code>
-          <ul>
-            <li>Column indexes to not make filterable</li>
-            <li>Type: <code>Array</code>
-            <li>Default: <code>[]</code></li>
-          </ul>
-        </li>
-        <li><code>onlyColumns</code>
-          <ul>
-            <li>Column indexes to make filterable, all other columns are left non-filterable.</li>
-            <li>This takes presidence over <code>ignoreColumns</code> when both are provided.</li>
-            <li>Type: <code>Array</code>
-            <li>Default: <code>null</code> - all columns</li>
-          </ul>
-        </li>
-        <li><code>prependWild</code>
-          <ul>
-            <li>If a wild card should be added to the start of all filter input</li>
-            <li>Type: <code>Boolean</code>
-            <li>Default: <code>true</code></li>
-          </ul>
-        </li>
-        <li><code>appendWild</code>
-          <ul>
-            <li>If a wild card should be added to the end of all filter input</li>
-            <li>Type: <code>Boolean</code>
-            <li>Default: <code>true</code></li>
-          </ul>
-        </li>
-        <li><code>ignoreCase</code>
-          <ul>
-            <li>If case should be ignored</li>
-            <li>Type: <code>Boolean</code>
-            <li>Default: <code>true</code></li>
-          </ul>
-        </li>
-      </ul>
+          <tbody>
+            <tr>
+              <td>Ford</td>
+              <td>Escort</td>
+              <td>Blue</td>
+              <td>2000</td>
+            </tr>
+            <tr>
+              <td>Ford</td>
+              <td>Ranger</td>
+              <td>Blue</td>
+              <td>1990</td>
+            </tr>
+            <tr>
+              <td>Toyota</td>
+              <td>Tacoma</td>
+              <td>Red</td>
+              <td>2012</td>
+            </tr>
+            <tr>
+              <td>Ford</td>
+              <td>Mustang</td>
+              <td>Silver</td>
+              <td>2012</td>
+            </tr>
+            <tr>
+              <td>Mercury</td>
+              <td>Sable</td>
+              <td>Silver</td>
+              <td>2002</td>
+            </tr>
+            <tr>
+              <td>Toyota</td>
+              <td>Corolla</td>
+              <td>Blue</td>
+              <td>2012</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="row span10">
+        <h1>Options</h1>
+        <ul>
+          <li><code>ignoreColumns</code>
+            <ul>
+              <li>Column indexes to not make filterable</li>
+              <li>Type: <code>Array</code>
+              <li>Default: <code>[]</code></li>
+            </ul>
+          </li>
+          <li><code>onlyColumns</code>
+            <ul>
+              <li>Column indexes to make filterable, all other columns are left non-filterable.</li>
+              <li>This takes presidence over <code>ignoreColumns</code> when both are provided.</li>
+              <li>Type: <code>Array</code>
+              <li>Default: <code>null</code> - all columns</li>
+            </ul>
+          </li>
+          <li><code>prependWild</code>
+            <ul>
+              <li>If a wild card should be added to the start of all filter input</li>
+              <li>Type: <code>Boolean</code>
+              <li>Default: <code>true</code></li>
+            </ul>
+          </li>
+          <li><code>appendWild</code>
+            <ul>
+              <li>If a wild card should be added to the end of all filter input</li>
+              <li>Type: <code>Boolean</code>
+              <li>Default: <code>true</code></li>
+            </ul>
+          </li>
+          <li><code>ignoreCase</code>
+            <ul>
+              <li>If case should be ignored</li>
+              <li>Type: <code>Boolean</code>
+              <li>Default: <code>true</code></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- FOOTER  -->
