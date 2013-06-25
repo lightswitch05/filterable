@@ -3,7 +3,6 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Filterable : Bootstrap and X-editable themed per-column filtering for an HTML table" />
 
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet">
@@ -23,7 +22,6 @@
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Filterable</a>
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li><a href="https://github.com/lightswitch05/filterable">Github</a></li>
@@ -54,89 +52,55 @@
 
     <!-- MAIN CONTENT -->
     <div class="container">
-      <h1>Demo <small>Click one of the <i class="icon-filter"></i> 's below to begin</small></h1>
-      <table id="example-table" class="table table-striped table-hover table-condensed">
-        <tr>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Color</th>
-          <th>Year</th>
-        </tr>
-        <tbody>
+      <div class="row center span10">
+        <h1>Demo <small>Click one of the <i class="icon-filter"></i> 's below to begin</small></h1>
+        <table id="example-table" class="table table-striped table-hover table-condensed">
           <tr>
-            <td>Ford</td>
-            <td>Escort</td>
-            <td>Blue</td>
-            <td>2000</td>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Year</th>
           </tr>
-          <tr>
-            <td>Ford</td>
-            <td>Ranger</td>
-            <td>Blue</td>
-            <td>1990</td>
-          </tr>
-          <tr>
-            <td>Toyota</td>
-            <td>Tacoma</td>
-            <td>Red</td>
-            <td>2012</td>
-          </tr>
-          <tr>
-            <td>Ford</td>
-            <td>Mustang</td>
-            <td>Silver</td>
-            <td>2012</td>
-          </tr>
-          <tr>
-            <td>Mercury</td>
-            <td>Sable</td>
-            <td>Silver</td>
-            <td>2002</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container">
-      <h1>Options</h1>
-      <ul>
-        <li><code>ignoreColumns</code>
-          <ul>
-            <li>Column indexes to not make filterable</li>
-            <li>Type: <code>Array</code>
-            <li>Default: <code>[]</code></li>
-          </ul>
-        </li>
-        <li><code>onlyColumns</code>
-          <ul>
-            <li>Column indexes to make filterable, all other columns are left non-filterable.</li>
-            <li>This takes presidence over <code>ignoreColumns</code> when both are provided.</li>
-            <li>Type: <code>Array</code>
-            <li>Default: <code>null</code> - all columns</li>
-          </ul>
-        </li>
-        <li><code>prependWild</code>
-          <ul>
-            <li>If a wild card should be added to the start of all filter input</li>
-            <li>Type: <code>Boolean</code>
-            <li>Default: <code>true</code></li>
-          </ul>
-        </li>
-        <li><code>appendWild</code>
-          <ul>
-            <li>If a wild card should be added to the end of all filter input</li>
-            <li>Type: <code>Boolean</code>
-            <li>Default: <code>true</code></li>
-          </ul>
-        </li>
-        <li><code>ignoreCase</code>
-          <ul>
-            <li>If case should be ignored</li>
-            <li>Type: <code>Boolean</code>
-            <li>Default: <code>true</code></li>
-          </ul>
-        </li>
-      </ul>
+          <tbody>
+            <tr>
+              <td>Ford</td>
+              <td>Escort</td>
+              <td>Blue</td>
+              <td>2000</td>
+            </tr>
+            <tr>
+              <td>Ford</td>
+              <td>Ranger</td>
+              <td>Blue</td>
+              <td>1990</td>
+            </tr>
+            <tr>
+              <td>Toyota</td>
+              <td>Tacoma</td>
+              <td>Red</td>
+              <td>2012</td>
+            </tr>
+            <tr>
+              <td>Ford</td>
+              <td>Mustang</td>
+              <td>Silver</td>
+              <td>2012</td>
+            </tr>
+            <tr>
+              <td>Mercury</td>
+              <td>Sable</td>
+              <td>Silver</td>
+              <td>2002</td>
+            </tr>
+            <tr>
+              <td>Toyota</td>
+              <td>Corolla</td>
+              <td>Blue</td>
+              <td>2012</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- FOOTER  -->
@@ -153,7 +117,9 @@
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>
   <script src="../src/jquery.filterable.js"></script>
-  <script src="http://lightswitch05.github.io/filterable/javascripts/main.js"></script>
+  <script type="text/javascript">
+    $('table').filterable();
+  </script>
 
   </body>
 </html>

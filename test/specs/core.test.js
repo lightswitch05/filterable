@@ -303,3 +303,65 @@ test("uses coumn name as popup title", function() {
   // Validate
   strictEqual(actual, 'Enter filter for Heading 1', "Title is 'Enter filter for Heading 1'");
 });
+
+/* Initialize multiple filterables for a single selector */
+test("initialize multiple filterables for a single selector", function() {
+  var rows = "";
+  for(var i=1; i<100; i++){
+    rows += "<tr>" +
+              "<td>Heading 1 Value " + i + "</td>" +
+              "<td>Heading 2 Value " + i + "</td>" +
+              "<td>Heading 3 Value " + i + "</td>" +
+              "<td>Heading 4 Value " + i + "</td>" +
+            "</tr>";
+  }
+  $("#qunit-fixture").html(
+      "<table id='test-table-1'>" +
+      "<tr>" +
+        "<th id='heading1-1'>Heading 1</th>" +
+        "<th id='heading1-2'>Heading 2</th>" +
+        "<th id='heading1-3'>Heading 3</th>" +
+        "<th id='heading1-4'>Heading 4</th>" +
+      "</tr>" + rows + "</table>" +
+      "<table id='test-table-2'>" +
+      "<tr>" +
+        "<th id='heading2-1'>Heading 1</th>" +
+        "<th id='heading2-2'>Heading 2</th>" +
+        "<th id='heading2-3'>Heading 3</th>" +
+        "<th id='heading2-4'>Heading 4</th>" +
+      "</tr>" + rows + "</table>" 
+  );
+
+  expect(8);
+  
+  // Init
+  $('table').filterable();
+  
+  // Fill out filter for table 1
+  $('#heading1-1 > i').click();
+  $('#heading1-1').find('input').val('heading 1 value 20');
+  $('#heading1-1').find('.editable-buttons > button[type="submit"]').click();
+  
+  // Fill out filter for table 2
+  $('#heading2-1 > i').click();
+  $('#heading2-1').find('input').val('heading 1 value 3');
+  $('#heading2-1').find('.editable-buttons > button[type="submit"]').click();
+  
+  // Validate first table
+  var match = $('#test-table-1 > tbody > tr.filterable-match').length;
+  var noMatch = $('#test-table-1 > tbody > tr.filterable-no-match').length;
+  var allRows = $('#test-table-1 > tbody > tr').length;
+  strictEqual(match, 1, "Finds 1 matches");
+  strictEqual(noMatch, 98, "Finds 98 non-matches");
+  strictEqual(allRows, 100, "Finds the expected number of rows");
+  strictEqual(match + noMatch, 99, "Every row is either a match or no-match");
+  
+  // Validate second table
+  var match = $('#test-table-2 > tbody > tr.filterable-match').length;
+  var noMatch = $('#test-table-2 > tbody > tr.filterable-no-match').length;
+  var allRows = $('#test-table-2 > tbody > tr').length;
+  strictEqual(match, 11, "Finds 11 matches");
+  strictEqual(noMatch,88, "Finds 89 non-matches");
+  strictEqual(allRows, 100, "Finds the expected number of rows");
+  strictEqual(match + noMatch, 99, "Every row is either a match or no-match");
+});
