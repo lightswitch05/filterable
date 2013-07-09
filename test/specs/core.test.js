@@ -271,7 +271,7 @@ test("uses * as wild card", function() {
 });
 
 /* Uses column name as popup title */
-test("uses coumn name as popup title", function() {
+test("uses column name as popup title", function() {
   var rows = "";
   for(var i=1; i<100; i++){
     rows += "<tr>" +
@@ -364,4 +364,44 @@ test("initialize multiple filterables for a single selector", function() {
   strictEqual(noMatch,88, "Finds 89 non-matches");
   strictEqual(allRows, 100, "Finds the expected number of rows");
   strictEqual(match + noMatch, 99, "Every row is either a match or no-match");
+});
+
+/* Escapes all wild card characters other than * */
+test("Escapes all wild card characters other than *", function() {
+  var rows = "";
+  rows += "<tr>" +
+            "<td>Heading 1 Value .09</td>" +
+            "<td>Heading 2 Value</td>" +
+		    "<td>Heading 2 Value" + 2 + "</td>" +
+          "</tr>";
+  rows += "<tr>" +
+            "<td>Heading 1 Value .9</td>" +
+            "<td>Heading 2 Value</td>" +
+            "<td>Heading 2 Value</td>" +
+          "</tr>";
+  $("#qunit-fixture").html(
+      "<table id='test-table'>" +
+      "<tr>" +
+        "<th id='heading1'>Heading 1</th>" +
+        "<th id='heading2'>Heading 2</th>" +
+        "<th id='heading2'>Heading 3</th>" +
+      "</tr>" + rows + "</table>"
+  );
+
+  expect(2);
+  
+  // Init
+  $('#test-table').filterable();
+  
+  // Fill out first filter
+  $('#heading1 > i').click();
+  $('#heading1').find('input').val('.9');
+  $('#heading1').find('.editable-buttons > button[type="submit"]').click();
+  
+  // Validate
+  var match = $('#test-table > tbody > tr.filterable-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var allRows = $('#test-table > tbody > tr').length;
+  strictEqual(match, 1, "Finds 1 match");
+  strictEqual(noMatch, 1, "Finds 1 non-match");
 });

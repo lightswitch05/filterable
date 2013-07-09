@@ -29,6 +29,7 @@
     };
     
     var buildRegex = function(query) {
+      query = query.replace(/[\-\[\]\/\{\}\(\)\+\?\.\\\^\$\|]/g, '\\$&');
       query = query.replace(/\*/, '.*');
       query = opts.prependWild ? '.*' + query : query;
       query += opts.appendWild ? '.*' : query;
