@@ -204,6 +204,6 @@ test('override isMatch function', function() {
   noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 0, 'Finds 0 matches');
-  strictEqual(noMatch, 98, 'Finds 99 non-matches');
+  strictEqual(noMatch, 99, 'Finds 99 non-matches');
   strictEqual(allRows, 100, 'Finds the expected number of rows');
 });
