@@ -29,11 +29,11 @@ test("ignores specific columns", function() {
   });
   
   // Click heading 1
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   var heading1 = $('#heading1').find('input').length;
   
   // Click heading 2
-  $('#heading2 > i').click();
+  $('#heading2 > div').click();
   var heading2 = $('#heading2').find('input').length;
   
   // Validate
@@ -70,15 +70,15 @@ test("only filter specific columns", function() {
   });
   
   // Click heading 1
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   var heading1 = $('#heading1').find('input').length;
   
   // Click heading 2
-  $('#heading2 > i').click();
+  $('#heading2 > div').click();
   var heading2 = $('#heading2').find('input').length;
   
    // Click heading 3
-  $('#heading3 > i').click();
+  $('#heading3 > div').click();
   var heading3 = $('#heading3').find('input').length;
   
   // Validate
@@ -135,13 +135,13 @@ test("case sensitive", function() {
   });
   
   // Fill out first filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('VALUE');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 1, "Finds 1 matche");
   strictEqual(noMatch, 2, "Finds 2 non-matches");

@@ -1,4 +1,4 @@
-.filterable {
+.filterable tr:nth-child(1) .editable {
   color: inherit;
   border-bottom: inherit;
   cursor: hand;
@@ -6,19 +6,19 @@
   font-style: normal;
 }
 
-.filterable:hover {
+.filterable tr:nth-child(1) .editable:hover {
   color: #5bb75b;
   border-bottom: inherit;
   font-style: normal;
 }
 
-.filterable-active {
+.filterable tr:nth-child(1) .filterable-active {
   color: #5bb75b;
   font-style: italic;
 }
 
 .filterable-match {}
 
-.filterable-no-match {
-  display: none !important;;
+.filterable-mismatch {
+  display: none !important;
 }

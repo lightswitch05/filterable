@@ -27,13 +27,13 @@ test("basic usage", function() {
   $('#test-table').filterable();
   
   // Fill out filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('heading 1 value 20');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 1, "Finds 1 matches");
   strictEqual(noMatch, 98, "Finds 98 non-matches");
@@ -68,13 +68,13 @@ test("append wild card", function() {
   $('#test-table').filterable();
   
   // Fill out filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('heading 1 value 2');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch, 88, "Finds 88 non-matches");
@@ -109,13 +109,13 @@ test("prepend wild card", function() {
   $('#test-table').filterable();
   
   // Fill out filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('1 value 2');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch, 88, "Finds 88 non-matches");
@@ -150,18 +150,18 @@ test("filters multiple columns", function() {
   $('#test-table').filterable();
   
   // Fill out first filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('Heading 1 value 2');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Fill out second filter
-  $('#heading2 > i').click();
+  $('#heading2 > div').click();
   $('#heading2').find('input').val('Heading 2 value 2');
   $('#heading2').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 9, "Finds 9 matches");
   strictEqual(noMatch, 90, "Finds 90 non-matches");
@@ -196,18 +196,18 @@ test("clears filters", function() {
   $('#test-table').filterable();
   
   // Fill out first filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('Heading 1 value 2');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Fill out second filter
-  $('#heading2 > i').click();
+  $('#heading2 > div').click();
   $('#heading2').find('input').val('Heading 2 value 2');
   $('#heading2').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 9, "Finds 9 matches");
   strictEqual(noMatch, 90, "Finds 90 non-matches");
@@ -215,13 +215,13 @@ test("clears filters", function() {
   strictEqual(match + noMatch, 99, "Every row is either a match or no-match");
   
   // Clear Second Filter
-  $('#heading2 > i').click();
+  $('#heading2 > div').click();
   $('#heading2').find('input').val('');
   $('#heading2').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   match = $('#test-table > tbody > tr.filterable-match').length;
-  noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch, 88, "Finds 88 non-matches");
@@ -256,13 +256,13 @@ test("uses * as wild card", function() {
   $('#test-table').filterable();
   
   // Fill out first filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('Heading 1 value *1');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 19, "Finds 19 matches");
   strictEqual(noMatch, 80, "Finds 80 non-matches");
@@ -297,7 +297,7 @@ test("uses column name as popup title", function() {
   $('#test-table').filterable();
   
   // Get value
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   var actual = $('#heading1').find('.popover-title').text();
 
   // Validate
@@ -338,18 +338,18 @@ test("initialize multiple filterables for a single selector", function() {
   $('table').filterable();
   
   // Fill out filter for table 1
-  $('#heading1-1 > i').click();
+  $('#heading1-1 > div').click();
   $('#heading1-1').find('input').val('heading 1 value 20');
   $('#heading1-1').find('.editable-buttons > button[type="submit"]').click();
   
   // Fill out filter for table 2
-  $('#heading2-1 > i').click();
+  $('#heading2-1 > div').click();
   $('#heading2-1').find('input').val('heading 1 value 3');
   $('#heading2-1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate first table
   var match = $('#test-table-1 > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table-1 > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table-1 > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table-1 > tbody > tr').length;
   strictEqual(match, 1, "Finds 1 matches");
   strictEqual(noMatch, 98, "Finds 98 non-matches");
@@ -358,7 +358,7 @@ test("initialize multiple filterables for a single selector", function() {
   
   // Validate second table
   var match = $('#test-table-2 > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table-2 > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table-2 > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table-2 > tbody > tr').length;
   strictEqual(match, 11, "Finds 11 matches");
   strictEqual(noMatch,88, "Finds 89 non-matches");
@@ -394,13 +394,13 @@ test("Escapes all wild card characters other than *", function() {
   $('#test-table').filterable();
   
   // Fill out first filter
-  $('#heading1 > i').click();
+  $('#heading1 > div').click();
   $('#heading1').find('input').val('.9');
   $('#heading1').find('.editable-buttons > button[type="submit"]').click();
   
   // Validate
   var match = $('#test-table > tbody > tr.filterable-match').length;
-  var noMatch = $('#test-table > tbody > tr.filterable-no-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
   var allRows = $('#test-table > tbody > tr').length;
   strictEqual(match, 1, "Finds 1 match");
   strictEqual(noMatch, 1, "Finds 1 non-match");
