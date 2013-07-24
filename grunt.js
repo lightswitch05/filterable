@@ -32,11 +32,12 @@ module.exports = function(grunt) {
     lint : {
       all : [
         "grunt.js",
-        "src/*.js"
+        "src/*.js",
+        "test/specs/*.js"
       ]
     },
     min: {
-      "lib/jquery.filterable.min.js" : ["<banner>", "<banner>","lib/jquery.filterable.js"]
+      "lib/jquery.filterable.min.js" : ["<banner>","lib/jquery.filterable.js"]
     },
     qunit: {
       files: ["test/index.html"]
