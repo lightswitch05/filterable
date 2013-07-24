@@ -30,14 +30,14 @@
     },
     
     hasMismatch: function() {
-      var hasMatch = false;
+      var nonMatch = false;
       $.each(this.cells, $.proxy(function(index, cell) {
-        if(this.notNull(cell) && cell.match !== true){
-          hasMatch = true;
+        if(this.notNull(cell) && cell.match === false){
+          nonMatch = true;
           return;
         }
       }, this));
-      return hasMatch;
+      return nonMatch;
     },
     
     filter: function(query, index) {

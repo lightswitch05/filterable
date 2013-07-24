@@ -41,9 +41,6 @@
         //add 'filterable-cell' class to every editable element
         this.$cell.addClass('filterable-cell');
         
-        // setup inital match
-        this.setMatch( this.isMatch(this.options.initialQuery) );
-        
         //finilize init
         $.proxy(function() {
            /**
