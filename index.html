@@ -138,25 +138,18 @@
               <li>Default: <code>null</code> - all columns</li>
             </ul>
           </li>
-          <li><code>prependWild</code>
-            <ul>
-              <li>If a wild card should be added to the start of all filter input</li>
-              <li>Type: <code>Boolean</code>
-              <li>Default: <code>true</code></li>
-            </ul>
-          </li>
-          <li><code>appendWild</code>
-            <ul>
-              <li>If a wild card should be added to the end of all filter input</li>
-              <li>Type: <code>Boolean</code>
-              <li>Default: <code>true</code></li>
-            </ul>
-          </li>
           <li><code>ignoreCase</code>
             <ul>
               <li>If case should be ignored</li>
               <li>Type: <code>Boolean</code>
               <li>Default: <code>true</code></li>
+            </ul>
+          </li>
+          <li><code>isMatch</code>
+            <ul>
+              <li>Define your own function to determine if a cell matches the user's query or not.</li>
+              <li>Type: <code>function(contents, query)</code>
+              <li>Default: <code>null</code></li>
             </ul>
           </li>
         </ul>
