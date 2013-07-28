@@ -25,12 +25,27 @@
 
 ## Options
 - `ignoreColumns`
-  - Array of column indexes to not make filterable
+  - Column indexes to not make filterable
+  - Type: `Array`
   - Default: `[]`
 - `onlyColumns`
-  - Array of column indexes to make filterable, all other columns are left non-filterable.
+  - Column indexes to make filterable, all other columns are left non-filterable.
+  - Type: `Array`
   - This takes presidence over `ignoreColumns` when provided.
   - Default: `null` - all columns
 - `ignoreCase`
-  - Boolean if case should be ignored
+  - If case should be ignored
+  - Type: `Boolean`
   - Default: `true`
+- `isMatch($cell, query)
+  - Custom function to determine if the cell matches the user supplied filter
+  - Type: `Function`
+  - Default: `null`
+- `editableOptions`
+  - Any custom options for X-editable
+  - Type: `Object`
+  - Defaults: `{}`
+- `editableSelector`
+  - Selector to use on each heading to define the x-editable object. If not supplied, the enire heading is used.
+  - Type: `String`
+  - Defaults: `null`

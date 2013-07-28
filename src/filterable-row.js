@@ -12,13 +12,6 @@
   FilterableRow.prototype = {
     constructor: FilterableRow,
     
-    notNull: function(value) {
-      if(value !== undefined && value !== null) {
-        return true;
-      }
-      return false;
-    },
-    
     setMatch: function(match) {
       if(match){
         this.$row.addClass('filterable-match');
@@ -32,7 +25,7 @@
     hasMismatch: function() {
       var nonMatch = false;
       $.each(this.cells, $.proxy(function(index, cell) {
-        if(this.notNull(cell) && cell.match === false){
+        if($.fn.filterableutils.notNull(cell) && cell.match === false){
           nonMatch = true;
           return;
         }
@@ -46,7 +39,7 @@
     },
     
     ignoredColumn: function(index) {
-      if( this.notNull(this.options.onlyColumns) ) {
+      if( $.fn.filterableutils.notNull(this.options.onlyColumns) ) {
         return $.inArray(index, this.options.onlyColumns) === -1;
       }
       return $.inArray(index, this.options.ignoreColumns) !== -1;
@@ -73,24 +66,24 @@
         //finilize init
         $.proxy(function() {
            /**
-           Fired when element was initialized by `$().filterable()` method.
+           Fired when row was initialized by `$().filterableRow()` method.
            Please note that you should setup `init` handler **before** applying `filterable`.
                           
            @event init
            @param {Object} event event object
            @param {Object} editable filterable instance (as here it cannot accessed via data('editable'))
            **/
-           this.$element.triggerHandler('init', this);
+           this.$row.triggerHandler('init', this);
         }, this);
     },
     
     /**
-    Removes filterable feature from element
+    Removes filterable row from element
     @method destroy()
     **/
     destroy: function() {
-      this.$element.removeClass('filterable-row filterable-match filterable-mismatch');
-      this.$element.removeData('fitlerableRow');
+      this.$row.removeClass('filterable-row filterable-match filterable-mismatch');
+      this.$row.removeData('fitlerableRow');
     }
   };
   

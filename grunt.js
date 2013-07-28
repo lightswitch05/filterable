@@ -22,6 +22,7 @@ module.exports = function(grunt) {
       dist : {
         src : [
           "<banner>",
+          "src/filterable-utils.js",
           "src/filterable-cell.js",
           "src/filterable-row.js",
           "src/filterable.js"

@@ -176,8 +176,8 @@ test('override isMatch function', function() {
   
   // Init
   $('#test-table').filterable({
-    isMatch: function(contents, query){
-      return contents === query;
+    isMatch: function(cell, query){
+      return cell.text() === query;
     }
   });
   
@@ -206,4 +206,156 @@ test('override isMatch function', function() {
   strictEqual(match, 0, 'Finds 0 matches');
   strictEqual(noMatch, 99, 'Finds 99 non-matches');
   strictEqual(allRows, 100, 'Finds the expected number of rows');
+});
+
+/* Editable element is limited using editableSelector */
+test('editable element is limited using editableSelector', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1">Heading 1 <i class="icon-filter"></i></th>' +
+        '<th id="heading2">Heading 2 <i class="icon-filter"></i></th>' +
+        '<th id="heading3">Heading 3 <i class="icon-filter"></i></th>' +
+        '<th id="heading4">Heading 4 <i class="icon-filter"></i></th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(2);
+  
+  // Init
+  $('#test-table').filterable({
+    editableElement: 'i[class|=icon]'
+  });
+  
+  // Click on heading - not editable element
+  $('#heading1').click();
+  var headingClick = $('#heading1').find('input').length;
+  
+  // Click on editable element
+  $('#heading1 i[class|=icon]').click();
+  var editableClick = $('#heading1').find('input').length;
+  
+  strictEqual(headingClick, 0, 'clicking on header (not editable element) does nothing');
+  strictEqual(editableClick, 1, 'clicking on editable element shows window');
+});
+
+/* Filters on initialization when data-value is provided */
+test('Filters on initialization when data-value is provided', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1" data-value="Heading 1 Row 2">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(4);
+  
+  // Init
+  $('#test-table').filterable();
+  
+  // Validate
+  var match = $('#test-table > tbody > tr.filterable-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
+  var allRows = $('#test-table > tbody > tr').length;
+  strictEqual(match, 11, 'Finds 11 matches');
+  strictEqual(noMatch, 88, 'Finds 88 non-matches');
+  strictEqual(allRows, 100, 'Finds the expected number of rows');
+  strictEqual(match + noMatch, 99, 'Every row is either a match or no-match');
+});
+
+/* Filters on initialization when data-value is provided */
+test('Inital filter works with integers', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1" data-value="2">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(4);
+  
+  // Init
+  $('#test-table').filterable();
+  
+  // Validate
+  var match = $('#test-table > tbody > tr.filterable-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
+  var allRows = $('#test-table > tbody > tr').length;
+  strictEqual(match, 19, 'Finds 19 matches');
+  strictEqual(noMatch, 80, 'Finds 88 non-matches');
+  strictEqual(allRows, 100, 'Finds the expected number of rows');
+  strictEqual(match + noMatch, 99, 'Every row is either a match or no-match');
+});
+
+/* editableOptions are passed to x-editable elements */
+test('editableOptions are passed to x-editable elements', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1" data-value="2">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(4);
+  
+  // Init
+  $('#test-table').filterable({
+    editableOptions: {
+      value: 'Row 20'
+    }
+  });
+  
+  // Validate
+  var match = $('#test-table > tbody > tr.filterable-match').length;
+  var noMatch = $('#test-table > tbody > tr.filterable-mismatch').length;
+  var allRows = $('#test-table > tbody > tr').length;
+  strictEqual(match, 1, 'Finds 1 match');
+  strictEqual(noMatch, 98, 'Finds 98 non-matches');
+  strictEqual(allRows, 100, 'Finds the expected number of rows');
+  strictEqual(match + noMatch, 99, 'Every row is either a match or no-match');
 });

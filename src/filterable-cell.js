@@ -24,7 +24,7 @@
     
     isMatch: function(query) {
       if (typeof this.options.isMatch === 'function') {
-        this.match = this.options.isMatch(this.$cell.text(), query);
+        this.match = this.options.isMatch(this.$cell, query);
       } else {
         query = query.replace(/[\-\[\]\/\{\}\(\)\+\?\.\\\^\$\|]/g, '\\$&');
         query = query.replace(/\*/, '.*');
@@ -56,7 +56,7 @@
     },
     
     /**
-    Removes filterable feature from element
+    Removes filterableCell from element
     @method destroy()
     **/
     destroy: function() {
@@ -89,24 +89,15 @@
     /**
     Function to determine if the cell matches the user supplied filter.
 
-    @property isMatch
+    @property isMatch($cell, query)
     @type function
     @default null
     @example
-    isMatch: function(value, query) {
+    isMatch: function($cell, query) {
       var regex = RegExp('.*' + query + '.*');
-      return regex.text( $.trim(value) );
+      return regex.text( cell.text() );
     }
     **/
-    isMatch: null,
-    
-    /**
-    Function to determine if the cell matches the user supplied filter.
-
-    @property initialQuery
-    @type string
-    @default ''
-    **/
-    initialQuery: ''
+    isMatch: null
   };
 })(jQuery);

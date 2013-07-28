@@ -12,22 +12,15 @@
   Filterable.prototype = {
     constructor: Filterable,
     
-    notNull: function(value) {
-      if(value !== undefined && value !== null) {
-        return true;
-      }
-      return false;
-    },
-    
     ignoredColumn: function(index) {
-      if( this.notNull(this.options.onlyColumns) ) {
+      if( $.fn.filterableutils.notNull(this.options.onlyColumns) ) {
         return $.inArray(index, this.options.onlyColumns) === -1;
       }
       return $.inArray(index, this.options.ignoreColumns) !== -1;
     },
     
     filter: function(query, cellIndex) {
-      if(!this.notNull(this.rows)){
+      if($.fn.filterableutils.isNull(this.rows)){
         this.initRows();
       }
       $.each(this.rows, $.proxy(function(rowIndex, row) {
@@ -72,12 +65,23 @@
         // Init X-editable for each heading
         this.$element.find('tr:first').first().children('td,th').each( $.proxy(function(index, heading) {
           if( !this.ignoredColumn(index) ) {
-            var editableElement = this.options.editableSelector;
-            if(!this.notNull(editableElement)) {
-              // Wrap heading content in div to force editable popup within <tr>
+            var editableElement;
+            if($.fn.filterableutils.notNull(this.options.editableSelector)) {
+              editableElement = $(heading).find(this.options.editableSelector);
+            }
+            else {
+              // No editable element defined, wrap heading content for use as editable
               editableElement =  $(heading).wrapInner('<div />').children().first();
+              // Copy any data-* attributes to new <div>
+              $(editableElement).data( $(heading).data() );
             }
             this.initEditable(editableElement, index);
+            
+            // If there is an initial filter, go ahead and filter
+            var initialFilter = String($(editableElement).editable('getValue', true));
+            if( initialFilter !== '' ){
+              this.filter(initialFilter, index);
+            }
           }
         }, this));
         

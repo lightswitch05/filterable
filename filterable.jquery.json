@@ -11,7 +11,7 @@
     "editable",
     "x-editable"
   ],
-  "version": "0.1.3",
+  "version": "0.2.0",
   "author": {
     "name": "Daniel White",
     "url": "http://www.developerdan.com"
@@ -26,6 +26,7 @@
   "homepage": "http://lightswitch05.github.io/filterable",
   "docs": "https://github.com/lightswitch05/filterable",
   "download": "https://github.com/lightswitch05/filterable",
+  "demo": "http://lightswitch05.github.io/filterable",
   "dependencies": {
     "jquery": ">=1.5"
   }
