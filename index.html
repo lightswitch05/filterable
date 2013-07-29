@@ -7,7 +7,7 @@
 
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.5/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
     <link href="stylesheets/bootstrap-filterable.css" rel="stylesheet">
     <link href="stylesheets/main.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.1/modernizr.min.js"></script>
@@ -74,10 +74,10 @@
         <h1>Demo <small>Click one of the <i class="icon-filter"></i> 's below to begin</small></h1>
         <table id="example-table" class="table table-striped table-hover table-condensed">
           <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Color</th>
-            <th>Year</th>
+            <th>Make <i class="icon-filter"></i></th>
+            <th>Model <i class="icon-filter"></i></th>
+            <th>Color <i class="icon-filter"></i></th>
+            <th>Year <i class="icon-filter"></i></th>
           </tr>
           <tbody>
             <tr>
@@ -141,14 +141,28 @@
           <li><code>ignoreCase</code>
             <ul>
               <li>If case should be ignored</li>
-              <li>Type: <code>Boolean</code>
+              <li>Type: <code>Boolean</code></li>
               <li>Default: <code>true</code></li>
             </ul>
           </li>
           <li><code>isMatch</code>
             <ul>
               <li>Define your own function to determine if a cell matches the user's query or not.</li>
-              <li>Type: <code>function(contents, query)</code>
+              <li>Type: <code>function($cell, query)</code></li>
+              <li>Default: <code>null</code></li>
+            </ul>
+          </li>
+          <li><code>editableOptions</code>
+            <ul>
+              <li>Any custom options for X-editable.</li>
+              <li>Type: <code>Object</code></li>
+              <li>Default: <code>{}</code></li>
+            </ul>
+          </li>
+          <li><code>editableSelector</code>
+            <ul>
+              <li>Selector to use on each heading to define the x-editable object. If not supplied, the enire heading is used.</li>
+              <li>Type: <code>String</code></li>
               <li>Default: <code>null</code></li>
             </ul>
           </li>
@@ -166,21 +180,26 @@
       </div>
     </footer>
 
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>
-  <script src="javascripts/jquery.filterable.min.js"></script>
-  <script src="javascripts/main.js"></script>
-  <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-    try {
-      var pageTracker = _gat._getTracker("UA-41192542-1");
-      pageTracker._trackPageview();
-    } catch(err) {}
-  </script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.5/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+    <script src="javascripts/jquery.filterable.min.js"></script>
+    <script type="text/javascript">
+      /* Enable the Filterable table - make only the filter icons the click-able items rather than the entire heading */
+      $('#example-table').filterable({
+        editableSelector: 'i[class="icon-filter"]'
+      });
+    </script>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-41192542-1");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
 
   </body>
 </html>

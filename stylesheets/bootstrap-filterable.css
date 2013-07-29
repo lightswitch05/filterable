@@ -1,24 +1,29 @@
-.filterable {
+.filterable tr:first-child .editable,
+.filterable tr:first-child .editable-click ,
+.filterable tr:first-child a.editable-click {
   color: inherit;
   border-bottom: inherit;
   cursor: hand;
   cursor: pointer;
   font-style: normal;
+  text-decoration: none;
 }
 
-.filterable:hover {
+.filterable tr:first-child .editable:hover,
+.filterable tr:first-child .editable-click :hover,
+.filterable tr:first-child a.editable-click :hover {
   color: #5bb75b;
   border-bottom: inherit;
   font-style: normal;
 }
 
-.filterable-active {
+.filterable tr:first-child .filterable-active {
   color: #5bb75b;
   font-style: italic;
 }
 
 .filterable-match {}
 
-.filterable-no-match {
-  display: none !important;;
+.filterable-mismatch {
+  display: none;
 }
