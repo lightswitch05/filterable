@@ -514,11 +514,11 @@ test('Autocomplete basic usage', function() {
   
   $(input).val('w 20');
   // Trigger keypress and keyup to start autotext
-  var press = jQuery.Event('keypress');
+  press = jQuery.Event('keypress');
   press.ctrlKey = false;
   press.which = 119;
   $(input).trigger(press);
-  var up = jQuery.Event('keyup');
+  up = jQuery.Event('keyup');
   up.ctrlKey = false;
   up.which = 87;
   $(input).trigger(up);
