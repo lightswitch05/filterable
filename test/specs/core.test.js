@@ -465,3 +465,66 @@ test('Filters are based on the current cell contents', function() {
   strictEqual(noMatch, 98, 'Finds 98 non-match');
   strictEqual(allRows, 100, 'Finds the expected number of rows');
 });
+
+/* Autocomplete basic usage */
+test('Autocomplete basic usage', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(2);
+  
+  // Init
+  $('#test-table').filterable();
+  
+  // Fill out filter
+  $('#heading1 > div').click();
+  var input = $('#heading1').find('input');
+  $(input).focus();
+  $(input).click();
+  $(input).val('w 2');
+  
+  // Trigger keypress and keyup to start autotext
+  var press = jQuery.Event('keypress');
+  press.ctrlKey = false;
+  press.which = 119;
+  $(input).trigger(press);
+  var up = jQuery.Event('keyup');
+  up.ctrlKey = false;
+  up.which = 87;
+  $(input).trigger(up);
+  
+  // Store number of autotexts
+  var firstListSize = $('#heading1').find('input').parent().find('ul > li').length;
+  
+  $(input).val('w 20');
+  // Trigger keypress and keyup to start autotext
+  var press = jQuery.Event('keypress');
+  press.ctrlKey = false;
+  press.which = 119;
+  $(input).trigger(press);
+  var up = jQuery.Event('keyup');
+  up.ctrlKey = false;
+  up.which = 87;
+  $(input).trigger(up);
+  
+  // Validate
+  var secondListSize = $('#heading1').find('input').parent().find('ul > li').length;
+  strictEqual(secondListSize, 1, 'Finds 1 typeahead value');
+  strictEqual(firstListSize, 8, 'Finds 8 typeahead values');
+});
