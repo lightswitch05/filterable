@@ -19,6 +19,27 @@
       return $.inArray(index, this.options.ignoreColumns) !== -1;
     },
     
+    initRows: function() {
+      this.rows = [];
+      this.$element.children('tbody,*').children('tr').each( $.proxy(function(rowIndex, row) {
+        if(rowIndex !== 0){
+          $(row).filterableRow(this.options);
+          this.rows.push( $(row).data('filterableRow') );
+        }
+      }, this));
+    },
+    
+    typeaheadValues: function(cellIndex) {
+      var values = {};
+      if( $.fn.filterableutils.isNull(this.rows) ){
+        this.initRows();
+      }
+      $.each(this.rows, $.proxy(function(rowIndex, row) {
+        values[ row.cell(cellIndex).value() ] = '';
+      }, this));
+      return Object.keys(values);
+    },
+    
     filter: function(query, cellIndex) {
       if($.fn.filterableutils.isNull(this.rows)){
         this.initRows();
@@ -29,13 +50,15 @@
     },
     
     initEditable: function(editableElement, index) {
+      var self = this;
       $(editableElement).editable($.extend({
         send: 'never',
-        type: 'text',
+        type: 'typeahead',
         emptytext: '',
         value: '',
         title: 'Enter filter for ' + $(editableElement).text(),
-        display: function() {}
+        display: function() {},
+        source: self.typeaheadValues(index)
       }, this.options.editableOptions));
       
       $(editableElement).on('save.editable', $.proxy(function(e, params) {
@@ -45,16 +68,6 @@
           $(editableElement).addClass('filterable-active');
         }
         this.filter(params.newValue, index);
-      }, this));
-    },
-    
-    initRows: function() {
-      this.rows = [];
-      this.$element.children('tbody,*').children('tr').each( $.proxy(function(rowIndex, row) {
-        if(rowIndex !== 0){
-          $(row).filterableRow(this.options);
-          this.rows.push( $(row).data('filterableRow') );
-        }
       }, this));
     },
     

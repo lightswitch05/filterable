@@ -12,6 +12,10 @@
   FilterableCell.prototype = {
     constructor: FilterableCell,
     
+    value: function() {
+      return this.$cell.text();
+    },
+    
     setMatch: function(match) {
       if(match){
         this.$cell.addClass('filterable-match');
@@ -31,7 +35,7 @@
         query = '.*' + query + '.*';
         var options = this.options.ignoreCase ? 'i' : '';
         var regex = new RegExp(query, options);
-        this.match = regex.test(this.$cell.text()) === true;
+        this.match = regex.test(this.value()) === true;
       }
       this.setMatch(this.match);
       return this.match;

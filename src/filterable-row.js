@@ -12,6 +12,10 @@
   FilterableRow.prototype = {
     constructor: FilterableRow,
     
+    cell: function(index) {
+      return this.cells[index];
+    },
+    
     setMatch: function(match) {
       if(match){
         this.$row.addClass('filterable-match');
@@ -60,8 +64,6 @@
           }
           this.cells.push( newCell );
         }, this));
-        
-        this.setMatch(this.hasMismatch());
         
         //finilize init
         $.proxy(function() {
