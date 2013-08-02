@@ -19,17 +19,21 @@ module.exports = function(grunt) {
                 " * @version <%= pkg.version %>\n" +
                 " */\n"
       },
-      dist : {
-        src : [
-          "src/filterable-utils.js",
-          "src/filterable-cell.js",
-          "src/filterable-row.js",
-          "src/filterable.js"
-        ],
-        dest : "lib/jquery.filterable.js"
+      dist: {
+        basic: {
+          files: {
+            "lib/jquery.filterable.js":
+                  ["src/filterable-utils.js",
+                   "src/filterable-cell.js",
+                   "src/filterable-row.js",
+                   "src/filterable.js"],
+            "lib/bootstrap-filterable.css":
+                  ["src/bootstrap-filterable.css"]
+          }
+        }
       }
     },
-    uglify : {
+    uglify: {
       options: {
         banner: "/**\n" +
                 " * @author <%= pkg.author.name %>\n" +
@@ -40,9 +44,7 @@ module.exports = function(grunt) {
                 " * @version <%= pkg.version %> **/\n"
       },
       dist: {
-        files: {
-          "lib/jquery.filterable.min.js": ["<%= concat.dist.dest %>"]
-        }
+        files : "<config:jshint.files>"
       }
     },
     qunit: {
@@ -50,7 +52,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files : "<config:lint.files>",
+        files : ["<config:jshint.files>", "<config:csslint.src>"],
         tasks : "default"
       }
     },
@@ -80,6 +82,14 @@ module.exports = function(grunt) {
         quotmark  : true,
         trailing  : true
       }
+    },
+    csslint: {
+      strict: {
+        options: {
+          import: 2
+        },
+        src: ["src/**/*.css"]
+      }
     }
   });
   
@@ -92,6 +102,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-csslint");
   
   // Default task.
-  grunt.registerTask("default", ["jshint", "qunit", "concat", "uglify"]);
+  grunt.registerTask("default", ["jshint", "csslint", "qunit", "concat", "uglify"]);
 
 };

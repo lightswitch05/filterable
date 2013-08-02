@@ -13,7 +13,7 @@
     "name": "Daniel White"
   },
   "scripts": {
-    "test": "grunt jshint qunit"
+    "test": "grunt jshint csslint qunit"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

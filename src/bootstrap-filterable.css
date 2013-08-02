@@ -1,14 +1,3 @@
-/**
- * filterable
- * jQuery plugin that filters an HTML table based on column-specific values using x-editable
- *
- * @author Daniel White
- * @copyright Daniel White 2013
- * @license MIT <https://github.com/lightswitch05/filterable/blob/master/MIT-LICENSE>
- * @link http://lightswitch05.github.io/filterable
- * @module filterable
- * @version 0.2.0
- */
 .filterable tr:first-child .editable,
 .filterable tr:first-child .editable-click ,
 .filterable tr:first-child a.editable-click {
