@@ -29,14 +29,7 @@ module.exports = function(grunt) {
         dest : "lib/jquery.filterable.js"
       }
     },
-    lint : {
-      all : [
-        "grunt.js",
-        "src/*.js",
-        "test/specs/*.js"
-      ]
-    },
-    uglify: {
+    uglify : {
       options: {
         banner: "/**\n" +
                 " * @author <%= pkg.author.name %>\n" +
@@ -48,7 +41,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'lib/jquery.filterable.min.js': ['<%= concat.dist.dest %>']
+          "lib/jquery.filterable.min.js": ["<%= concat.dist.dest %>"]
         }
       }
     },
@@ -62,6 +55,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
+      files : [
+        "Gruntfile.js",
+        "src/*.js",
+        "test/specs/*.js"
+      ],
       options: {
         curly     : true,
         eqeqeq    : true,
