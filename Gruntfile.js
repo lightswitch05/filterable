@@ -20,16 +20,14 @@ module.exports = function(grunt) {
                 " */\n"
       },
       dist: {
-        basic: {
-          files: {
-            "lib/jquery.filterable.js":
-                  ["src/filterable-utils.js",
-                   "src/filterable-cell.js",
-                   "src/filterable-row.js",
-                   "src/filterable.js"],
-            "lib/bootstrap-filterable.css":
-                  ["src/bootstrap-filterable.css"]
-          }
+        files: {
+          "lib/jquery.filterable.js":
+                ["src/filterable-utils.js",
+                 "src/filterable-cell.js",
+                 "src/filterable-row.js",
+                 "src/filterable.js"],
+          "lib/bootstrap-filterable.css":
+                ["src/bootstrap-filterable.css"]
         }
       }
     },
@@ -44,17 +42,13 @@ module.exports = function(grunt) {
                 " * @version <%= pkg.version %> **/\n"
       },
       dist: {
-        files : "<config:jshint.files>"
+        files: {
+          "lib/jquery.filterable.min.js": ["lib/jquery.filterable.js"]
+        }
       }
     },
     qunit: {
       files: ["test/index.html"]
-    },
-    watch: {
-      scripts: {
-        files : ["<config:jshint.files>", "<config:csslint.src>"],
-        tasks : "default"
-      }
     },
     jshint: {
       files : [
