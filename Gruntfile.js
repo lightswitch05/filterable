@@ -53,6 +53,7 @@ module.exports = function(grunt) {
     jshint: {
       files : [
         "Gruntfile.js",
+        "bower.json",
         "src/*.js",
         "test/specs/*.js"
       ],
