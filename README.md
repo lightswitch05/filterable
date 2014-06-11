@@ -49,3 +49,11 @@
   - Selector to use on each heading to define the x-editable object. If not supplied, the enire heading is used.
   - Type: `String`
   - Defaults: `null`
+- `beforeFilter`
+  - Function to call before filtering a column
+  - Type: `Function`
+  - Defaults: `null`
+- `afterFilter`
+  - Function to call after filtering a column
+  - Type: `Function`
+  - Defaults: `null`
