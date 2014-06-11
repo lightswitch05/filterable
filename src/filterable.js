@@ -43,12 +43,18 @@
     },
     
     filter: function(query, cellIndex) {
+      if (typeof this.options.beforeFilter === 'function') {
+        this.options.beforeFilter(cellIndex, query);
+      }
       if($.fn.filterableutils.isNull(this.rows)){
         this.initRows();
       }
       $.each(this.rows, $.proxy(function(rowIndex, row) {
         row.filter(query, cellIndex);
       }, this));
+      if (typeof this.options.afterFilter === 'function') {
+        this.options.afterFilter(cellIndex, query);
+      }
     },
     
     initEditable: function(editableElement, index) {
@@ -185,6 +191,28 @@
     @type string
     @default null
     **/
-    editableSelector: null
+    editableSelector: null,
+
+    /**
+    Function called before filtering is done.
+    @property beforeFilter(cellIndex, query)
+    @default null
+    @example
+    beforeFilter: function(cellIndex, query) {
+      // Manipulate DOM here
+    }
+    **/
+    beforeFilter: null,
+
+    /**
+    Function called after filtering is done.
+    @property afterFilter(cellIndex, query)
+    @default null
+    @example
+    afterFilter: function(cellIndex, query) {
+      // Manipulate DOM here
+    }
+    **/
+    afterFilter: null
   };
 })(jQuery);
