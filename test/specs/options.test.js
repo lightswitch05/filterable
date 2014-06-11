@@ -359,3 +359,133 @@ test('editableOptions are passed to x-editable elements', function() {
   strictEqual(allRows, 100, 'Finds the expected number of rows');
   strictEqual(match + noMatch, 99, 'Every row is either a match or no-match');
 });
+
+/* beforeFilter is called before the filter is performed */
+test('beforeFilter is called before the filter is performed', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(2);
+  
+  // Init
+  var beforeFilterCalled = false;
+  $('#test-table').filterable({
+    beforeFilter: function(){
+      beforeFilterCalled = true;
+    }
+  });
+  
+  strictEqual(beforeFilterCalled, false, 'Before filter has not been called yet');
+  
+  // Fill out filter
+  $('#heading1 > div').click();
+  $('#heading1').find('input').val('heading 1 row 20');
+  $('#heading1').find('.editable-buttons > button[type="submit"]').click();
+  
+  strictEqual(beforeFilterCalled, true, 'Before filter has been called');
+});
+
+/* afterFilter is called after the filter is performed */
+test('afterFilter is called after the filter is performed', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(2);
+  
+  // Init
+  var afterFilterCalled = false;
+  $('#test-table').filterable({
+    afterFilter: function(){
+      afterFilterCalled = true;
+    }
+  });
+  
+  strictEqual(afterFilterCalled, false, 'After filter has not been called yet');
+  
+  // Fill out filter
+  $('#heading1 > div').click();
+  $('#heading1').find('input').val('heading 1 row 20');
+  $('#heading1').find('.editable-buttons > button[type="submit"]').click();
+  
+  strictEqual(afterFilterCalled, true, 'After filter has been called');
+});
+
+/* beforeFilter && afterFilter is called in order */
+test('beforeFilter && afterFilter is called in order', function() {
+  var rows = '';
+  for(var i=1; i<100; i++){
+    rows += '<tr>' +
+              '<td>Heading 1 Row ' + i + '</td>' +
+              '<td>Heading 2 Row ' + i + '</td>' +
+              '<td>Heading 3 Row ' + i + '</td>' +
+              '<td>Heading 4 Row ' + i + '</td>' +
+            '</tr>';
+  }
+  $('#qunit-fixture').html(
+      '<table id="test-table">' +
+      '<tr>' +
+        '<th id="heading1">Heading 1</th>' +
+        '<th id="heading2">Heading 2</th>' +
+        '<th id="heading3">Heading 3</th>' +
+        '<th id="heading4">Heading 4</th>' +
+      '</tr>' + rows + '</table>'
+  );
+
+  expect(6);
+  
+  // Init
+  var afterFilterCalled = false;
+  var beforeFilterCalled = false;
+  $('#test-table').filterable({
+    beforeFilter: function(){
+      strictEqual(beforeFilterCalled, false, 'Before filter has not been called yet');
+      strictEqual(afterFilterCalled, false, 'After filter has not been called yet');
+      beforeFilterCalled = true;
+    },
+    afterFilter: function(){
+      strictEqual(beforeFilterCalled, true, 'Before filter already been called');
+      strictEqual(afterFilterCalled, false, 'After filter has not been called yet');
+      afterFilterCalled = true;
+    }
+  });
+  
+  // Fill out filter
+  $('#heading1 > div').click();
+  $('#heading1').find('input').val('heading 1 row 20');
+  $('#heading1').find('.editable-buttons > button[type="submit"]').click();
+  
+  strictEqual(beforeFilterCalled, true, 'Before filter has been called');
+  strictEqual(afterFilterCalled, true, 'After filter has been called');
+});
