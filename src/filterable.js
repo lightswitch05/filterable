@@ -205,7 +205,7 @@
     beforeFilter: null,
 
     /**
-    Function called before filtering is done.
+    Function called after filtering is done.
     @property afterFilter(cellIndex, query)
     @default null
     @example
