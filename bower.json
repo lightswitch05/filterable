@@ -1,6 +1,6 @@
 {
   "name": "filterable",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": ["./lib/jquery.filterable.js", "./lib/bootstrap-filterable.css"],
   "dependencies": {
     "bootstrap": ">=2.3.2 <3.0.0",
