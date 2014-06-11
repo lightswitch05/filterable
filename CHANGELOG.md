@@ -1,3 +1,6 @@
+## Release 0.3.0 - 2014-06-11
+* Added two callbacks, `beforeFilter` & `afterFilter`. Thanks [Siddhesh Vichare](https://github.com/sid1029)
+
 ## Release 0.2.0
 * **The release breaks backwards compatibility for `prependWild`, `appendWild`, and automatically adding `<td class="icon-filter"><i>` element.**
 * Complete re-write
