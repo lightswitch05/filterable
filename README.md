@@ -1,6 +1,9 @@
-# Filterable
+# Filterable - UNSUPPORTED
 
 [![Build Status](https://travis-ci.org/lightswitch05/filterable.png?branch=master)](https://travis-ci.org/lightswitch05/filterable)
+
+## UNSUPPORTED
+I no longer support this project, it is very out of date and will be even more out of date when Bootstrap 4 is out of beta. If someone wants to update the project - please submit pull request and I'll merged them.
 
 [Bootstrap](http://twitter.github.io/bootstrap/) and [X-editable](http://vitalets.github.io/x-editable/) themed [jQuery](http://jquery.com/) plugin that preforms per-column filtering for an HTML table.
 
